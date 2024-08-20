@@ -1,0 +1,27 @@
+<div class="chat_window">
+    <button (click)="returnHome()" type="button" class="btn btn-outline-info btn-lg">
+        Retour au menu</button>
+    <div class="topMenu">
+        <div class="title">
+            Chat en direct
+        </div>
+    </div>
+    <ul class="chatMessages">
+        <li class="message right" *ngFor="let item of messageList"
+            [ngClass]="{'left': item.message_side === 'receiver', 'right': item.message_side === 'sender'}">
+            <div class="avatar"></div>
+            <div class="textDiv">
+                <div class="text">{{item.message}}</div>
+            </div>
+        </li>
+    </ul>
+    <div class="chatInput">
+        <div class="messageDivInput">
+            <input class="messageInput" placeholder="Ecrivez un message" [(ngModel)]="messageInput"
+                   (keyup.enter)="sendMessage()"/>
+        </div>
+        <div class="sendButton" (click)="sendMessage()">
+            <div class="text">Envoyer</div>
+        </div>
+    </div>
+</div>
